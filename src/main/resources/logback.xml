@@ -3,7 +3,7 @@
 	<!--Daily rolling file appender -->
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
 
-		<file>./log/excel_handler.log</file>
+		<file>./log/excel_handler2.log</file>
 
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<FileNamePattern>./log/excel_handler_%d{yyyy-MM-dd}-%i.log</FileNamePattern>
