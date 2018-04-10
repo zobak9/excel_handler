@@ -1,0 +1,49 @@
+<configuration>
+	
+	<!--Daily rolling file appender -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+		<file>./log/excel_handler.log</file>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>./log/excel_handler_%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		
+		<encoder>
+			<charset>UTF-8</charset>
+			<Pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} [%thread] - %msg %n</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} [%thread] - %msg %n</Pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>TRACE</level>
+		</filter>
+	</appender>
+
+	<logger name="sk.ptacin.excel">
+		<level value="DEBUG"/>
+	</logger>
+
+	<logger name="org.apache.poi">
+		<level value="DEBUG"/>
+	</logger>
+
+
+	<logger name="org.springframework">
+		<level value="WARN"/>
+	</logger>
+
+	<root>
+		<level value="INFO"/>
+		<appender-ref ref="FILE"/>
+		<appender-ref ref="consoleAppender"/>
+	</root>
+
+</configuration>
